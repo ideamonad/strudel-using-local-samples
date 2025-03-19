@@ -12,19 +12,30 @@ An experiment in making a [Tidal](https://github.com/tidalcycles/tidal/) using w
 
 ## Running Locally
 
+It's a Strudel version which only uses local samples offline.
+
 After cloning the project, you can run the REPL locally:
 
 1. Install [Node.js](https://nodejs.org/)
 2. Install [pnpm](https://pnpm.io/installation)
 3. Install dependencies by running the following command:
    ```bash
+   # from root of <your-strudel>
    pnpm i
    ```
 4. Run the development server:
    ```bash
+   # from root of <your-strudel>
    pnpm dev
    ```
-
+5. Download samples to `<your-strudel>/samples` folder from <https://github.com/felixroos/dough-samples> <https://github.com/felixroos/webaudiofontdata>
+6. Run the local samples server:
+   ```bash
+   # from root of <your-strudel>
+   cd samples
+   npx ../packages/sampler
+   ```
+7. Please refer to `<your-strudel>/samples/README.md` for how to load local samples in your code
 ## Using Strudel In Your Project
 
 This project is organized into many [packages](./packages), which are also available on [npm](https://www.npmjs.com/search?q=%40strudel).
