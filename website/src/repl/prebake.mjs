@@ -4,7 +4,10 @@ import { registerSamplesFromDB } from './idbutils.mjs';
 import './piano.mjs';
 import './files.mjs';
 
-const { BASE_URL } = import.meta.env;
+//const { BASE_URL } = import.meta.env;
+
+// for supporting local samples
+const BASE_URL = 'http://localhost:5432/';
 const baseNoTrailing = BASE_URL.endsWith('/') ? BASE_URL.slice(0, -1) : BASE_URL;
 
 export async function prebake() {
@@ -23,13 +26,29 @@ export async function prebake() {
     // https://github.com/sgossner/VCSL/
     // https://api.github.com/repositories/126427031/contents/
     // LICENSE: CC0 general-purpose
-    samples(`${baseNoTrailing}/vcsl.json`, 'github:sgossner/VCSL/master/', { prebake: true }),
-    samples(`${baseNoTrailing}/tidal-drum-machines.json`, 'github:ritchse/tidal-drum-machines/main/machines/', {
+    
+    // samples(`${baseNoTrailing}/vcsl.json`, 'github:sgossner/VCSL/master/', { prebake: true }),
+    // local samples
+    samples(`${baseNoTrailing}/vcsl.json`, undefined, { prebake: true }),
+  
+    // samples(`${baseNoTrailing}/tidal-drum-machines.json`, 'github:ritchse/tidal-drum-machines/main/machines/', {
+    //   prebake: true,
+    //   tag: 'drum-machines',
+    // }),
+
+    // local samples
+    samples(`${baseNoTrailing}/tidal-drum-machines.json`, 
+      undefined,
+      {
       prebake: true,
       tag: 'drum-machines',
     }),
     samples(`${baseNoTrailing}/EmuSP12.json`, undefined, { prebake: true, tag: 'drum-machines' }),
     samples(`${baseNoTrailing}/mridangam.json`, undefined, { prebake: true, tag: 'drum-machines' }),
+
+    // local samples
+    samples(`${baseNoTrailing}/Dirt-Samples.json`, undefined, { prebake: true, tag: 'drum-machines' }),
+
     samples(
       {
         casio: ['casio/high.wav', 'casio/low.wav', 'casio/noise.wav'],
@@ -146,7 +165,7 @@ export async function prebake() {
     ),
   ]);
 
-  aliasBank(`${baseNoTrailing}/tidal-drum-machines-alias.json`);
+  aliasBank(`${baseNoTrailing}/tidal-drum-machines-alias.json`);  
 }
 
 const maxPan = noteToMidi('C8');
