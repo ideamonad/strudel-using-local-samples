@@ -13,7 +13,8 @@ export async function initHydra(options = {}) {
   //load and init hydra
   if (!document.getElementById('hydra-canvas')) {
     const {
-      src = 'https://unpkg.com/hydra-synth',
+      // src = 'https://unpkg.com/hydra-synth',
+      src = './hydra-synth.js',
       feedStrudel = false,
       contextType = 'webgl',
       pixelRatio = 1,
