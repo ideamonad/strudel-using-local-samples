@@ -69,3 +69,15 @@
   text-decoration: underline 0.18rem;
   text-underline-offset: 0.22rem;
 }
+
+/* custom style for autocomplete*/
+#code .cm-tooltip-autocomplete {
+  background: #282828;
+  color: #999; 
+}
+
+/* custom style for selected autocomplete item */
+#code .cm-tooltip-autocomplete [aria-selected="true"] {
+  background: #000;
+  color: #ccc; 
+}

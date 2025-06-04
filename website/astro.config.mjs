@@ -139,4 +139,7 @@ export default defineConfig({
       // external: ['fraction.js'], // https://github.com/infusion/Fraction.js/issues/51
     },
   },
+
+  // for dynamically walking directory
+  output: 'server'
 });
